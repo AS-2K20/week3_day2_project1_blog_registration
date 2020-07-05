@@ -1,5 +1,7 @@
 package controller;
 
+import model.User;
+import businesslogic.RegistrationValidation;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 
 @WebServlet(urlPatterns= {"/signup"})
@@ -31,12 +32,13 @@ public class SignUpController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*	String email = request.getParameter("email"); 
+		String email = request.getParameter("email"); 
 		String password = request.getParameter("password"); 
 		String confirmPassword = request.getParameter("confirmPassword"); 
 		LocalDateTime date= LocalDateTime.now(); 
 		
-
+		RegistrationValidation checkUser = new RegistrationValidation();
+		checkUser.checkUserDetails(email, password, confirmPassword);
 		
 		if(checkUser.checkUserDetails(email, password, confirmPassword))
 		{
@@ -58,7 +60,7 @@ public class SignUpController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		
-		*/
+	
 	}
 
 }
